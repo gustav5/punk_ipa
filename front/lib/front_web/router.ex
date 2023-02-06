@@ -20,14 +20,6 @@ defmodule FrontWeb.Router do
     get "/", PageController, :index
 
     live "/search", SearchLive
-    live "/search", SearchLive
     live "/info/:brand", InfoLive
-
-    # live "/info/:brand", InfoLive
   end
-
-  # Other scopes may use custom stacks.
-  # scope "/api", FrontWeb do
-  #   pipe_through :api
-  # end
 end
