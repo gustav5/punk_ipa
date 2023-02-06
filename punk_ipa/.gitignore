@@ -24,3 +24,6 @@ punk_ipa-*.tar
 
 # Temporary files, for example, from tests.
 /tmp/
+
+#database
+database1.db
