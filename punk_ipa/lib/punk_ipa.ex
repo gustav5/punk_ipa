@@ -12,8 +12,12 @@ defmodule PunkIpa do
     GenServer.start_link(__MODULE__, default, name: __MODULE__)
   end
 
-  def get_beer(name) do
-    GenServer.call(__MODULE__, {:get_beer, name})
+  def get_beer(name, page) do
+    GenServer.call(__MODULE__, {:get_beer, name, page})
+  end
+
+  def more_info(name) do
+    GenServer.call(__MODULE__, {:more_info, name})
   end
 
   def get_state() do
@@ -35,10 +39,28 @@ defmodule PunkIpa do
   end
 
   @impl true
-  def handle_call({:get_beer, choosen_name}, _from, state) do
-    list = search_beers(state, choosen_name)
-    list = Enum.map(list, fn map -> %{namn: map.name, alkoholhalt: map.abv} end)
+  def handle_call({:get_beer, choosen_name, page}, _from, state) do
+    list =
+      state
+      |> search_beers(choosen_name)
+      |> Enum.map(fn map -> %{namn: map.name, alkoholhalt: map.abv} end)
+      |> select_page(page)
     {:reply, list, state}
+  end
+
+  @impl true
+  def handle_call({:more_info, chosen_name}, _from, state) do
+    map =
+      state
+      |> search_beers(chosen_name)
+      |> List.first()
+
+    {:reply,
+    %{name: chosen_name,
+      description: map.description,
+      food_pairing: map.food_pairing
+      },
+     state}
   end
 
   @impl true
@@ -95,5 +117,12 @@ defmodule PunkIpa do
         true -> false
       end
     end)
+  end
+
+  defp select_page(list,page) do
+    len = length(list)
+    list
+    |> Enum.take(10 * page)
+    |> Enum.drop(10 * (page - 1))
   end
 end
