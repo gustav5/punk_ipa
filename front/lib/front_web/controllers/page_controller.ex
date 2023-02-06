@@ -4,8 +4,4 @@ defmodule FrontWeb.PageController do
   def index(conn, params) do
     render(conn, "index.html")
   end
-
-  def info(conn, params) do
-    render(conn, "index.html")
-  end
 end

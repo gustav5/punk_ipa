@@ -20,8 +20,7 @@ defmodule FrontWeb.Router do
     get "/", PageController, :index
 
     live "/search", SearchLive
-
-    live "/paginate", PaginateLive
+    live "/search", SearchLive
     live "/info/:brand", InfoLive
 
     #live "/info/:brand", InfoLive

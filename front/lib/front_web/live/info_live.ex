@@ -15,7 +15,6 @@ defmodule FrontWeb.InfoLive do
   end
 
   def render(assigns) do
-    IO.inspect(assigns)
     ~L"""
     <div class="info">
       <div class="name">
@@ -23,11 +22,11 @@ defmodule FrontWeb.InfoLive do
       </div>
       <p></p>
       <div class="description">
-        description: <%= assigns.description%>
+        beskriving: <%= assigns.description%>
       </div>
       <p></p>
       <div class="food_pairing">
-        food_pairing: <%= assigns.food_pairing %>
+        passande mat: <%= assigns.food_pairing %>
       </div>
     </div>
     """
