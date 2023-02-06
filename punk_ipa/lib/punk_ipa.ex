@@ -54,7 +54,7 @@ defmodule PunkIpa do
       |> search_beers(chosen_name)
       |> List.first()
 
-    {:reply, %{name: chosen_name, description: map.description, food_pairing: map.food_pairing},
+    {:reply, %{name: chosen_name, description: map.description, food_pairing: Enum.join(map.food_pairing,", ")},
      state}
   end
 

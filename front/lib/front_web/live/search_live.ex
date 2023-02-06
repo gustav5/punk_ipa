@@ -14,7 +14,7 @@ defmodule FrontWeb.SearchLive do
 
   def render(assigns) do
     ~L"""
-    <h1>Sök efter Punk Ipa ö</h1>
+    <h1>Sök efter Punk Ipa öl</h1>
     <form phx-change="select-per-page">
       Show
       <select name="per-page">
