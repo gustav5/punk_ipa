@@ -54,7 +54,7 @@ defmodule PunkIpa do
       |> search_beers(chosen_name)
       |> List.first()
 
-    {:reply, %{name: chosen_name, description: map.description, food_pairing: map.food_pairing},
+    {:reply, %{name: chosen_name, description: map.description, food_pairing: Enum.join(map.food_pairing,", ")},
      state}
   end
 
@@ -118,8 +118,6 @@ defmodule PunkIpa do
   end
 
   defp select_page(list, page) do
-    len = length(list)
-
     list
     |> Enum.take(10 * page)
     |> Enum.drop(10 * (page - 1))
