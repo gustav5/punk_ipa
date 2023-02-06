@@ -20,7 +20,7 @@ defmodule PunkIpa.Store do
       name
     end)
     |> Enum.map(fn {_key, value} ->
-      %{name: elem(List.first(value |> IO.inspect(label: "23: ") ), 0),
+      %{name: elem(List.first(value), 0),
         description: elem(List.first(value), 1),
         abv: elem(List.first(value), 2),
         yeast: elem(List.first(value), 3),
