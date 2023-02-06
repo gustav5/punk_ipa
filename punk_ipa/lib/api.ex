@@ -27,7 +27,9 @@ defmodule PunkIpa.Api do
               food_pairing: Map.get(x, "food_pairing")
             }
           end)
+
         {:ok, result}
+
       {:error, reason} ->
         {:error, reason}
     end

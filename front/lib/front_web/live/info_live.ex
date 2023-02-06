@@ -4,13 +4,13 @@ defmodule FrontWeb.InfoLive do
   def mount(%{"brand" => brand}, session, socket) do
     data = PunkIpa.more_info(brand)
 
-
     socket =
       assign(socket,
-      name: brand,
-      description: data.description,
-      food_pairing: data.food_pairing
+        name: brand,
+        description: data.description,
+        food_pairing: data.food_pairing
       )
+
     {:ok, socket}
   end
 
@@ -31,5 +31,4 @@ defmodule FrontWeb.InfoLive do
     </div>
     """
   end
-
 end

@@ -4,10 +4,11 @@ defmodule FrontWeb.SearchLive do
   def mount(_params, _session, socket) do
     socket =
       assign(socket,
-      phrase: "",
-      stores: [],
-      loading: false
+        phrase: "",
+        stores: [],
+        loading: false
       )
+
     {:ok, socket}
   end
 
@@ -99,7 +100,6 @@ defmodule FrontWeb.SearchLive do
     """
   end
 
-
   def handle_params(params, _url, socket) do
     page = String.to_integer(params["page"] || "1")
     paginate_options = %{page: page, per_page: 10}
@@ -123,18 +123,18 @@ defmodule FrontWeb.SearchLive do
   def handle_event("search", %{"phrase" => phrase}, socket) do
     socket =
       case phrase == "" do
-        true -> socket
+        true ->
+          socket
+
         false ->
           assign(socket,
-              phrase: phrase,
-              stores: PunkIpa.get_beer(phrase,1)
-            )
+            phrase: phrase,
+            stores: PunkIpa.get_beer(phrase, 1)
+          )
       end
 
     {:noreply, socket}
   end
-
-
 
   def handle_event("select-per-page", %{"per-page" => per_page}, socket) do
     per_page = String.to_integer(per_page)
@@ -149,8 +149,6 @@ defmodule FrontWeb.SearchLive do
             per_page: per_page
           )
       )
-
-
 
     {:noreply, socket}
   end

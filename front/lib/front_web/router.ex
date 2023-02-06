@@ -23,7 +23,7 @@ defmodule FrontWeb.Router do
     live "/search", SearchLive
     live "/info/:brand", InfoLive
 
-    #live "/info/:brand", InfoLive
+    # live "/info/:brand", InfoLive
   end
 
   # Other scopes may use custom stacks.
