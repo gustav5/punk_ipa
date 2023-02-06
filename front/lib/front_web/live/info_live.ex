@@ -1,7 +1,7 @@
 defmodule FrontWeb.InfoLive do
   use FrontWeb, :live_view
 
-  def mount(%{"brand" => brand}, session, socket) do
+  def mount(%{"brand" => brand}, _session, socket) do
     data = PunkIpa.more_info(brand)
 
     socket =
